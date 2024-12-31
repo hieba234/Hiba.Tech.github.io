@@ -146,6 +146,15 @@ footer p {
     h2, h3 {
         color: #333;
     }
+<style>
+    #pdf-viewer {
+        margin: 20px;
+        text-align: left;
+    }
+
+    h2, h3 {
+        color: #333;
+    }
 
     iframe, object {
         border: 1px solid #ddd;
