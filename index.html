@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hiba.Tech - Mechatronics Engineer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="js/pdfjs/pdf.min.js"></script>
+<script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'js/pdfjs/pdf.worker.min.js';
+</script>
 </head>
 <body>
     <header>
@@ -82,15 +86,14 @@
     <section id="pdf-viewer" class="container">
     <h2>Automation System</h2>
     <h3>Controller Design and Process Simulation Using MATLAB/Simulink</h3>
-    <embed src="PDF/hussein coures work.pdf" width="100%" height="600px" type="application/pdf">
+    <canvas id="pdf-canvas"></canvas>
     <p>
         If the PDF does not load, 
-        <a href="PDF/hussein coures work.pdf" target="_blank" style="text-decoration: underline; color: #007BFF;">
+        <a href="PDF/hussein course work.pdf" target="_blank" style="text-decoration: underline; color: #007BFF;">
             click here to download or view it.
         </a>
     </p>
 </section>
-
 
     <section id="computer vision" class="container">
             <h2>computer vision</h2>
