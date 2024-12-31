@@ -143,3 +143,12 @@ footer p {
     }
 }
 
+    h2, h3 {
+        color: #333;
+    }
+
+    iframe, object {
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
+</style>
