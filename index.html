@@ -6,10 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hiba.Tech - Mechatronics Engineer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="js/pdfjs/pdf.min.js"></script>
-<script>
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'js/pdfjs/pdf.worker.min.js';
-</script>
 </head>
 <body>
     <header>
@@ -84,33 +80,11 @@
     </section>
 
     <section id="pdf-viewer" class="container">
-    <h2>Automation System</h2>
-    <h3>Controller Design and Process Simulation Using MATLAB/Simulink</h3>
-    <canvas id="pdf-canvas"></canvas>
-    <p>
-        If the PDF does not load, 
-        <a href="PDF/hussein coures work.pdf" target="_blank" style="text-decoration: underline; color: #007BFF;">
-            click here to download or view it.
-        </a>
-    </p>
-    const pdfUrl = 'PDF/hussein coures work.pdf'; // Path to your PDF
+    <h2>Automation system</h2>
 
-    async function renderPDF() {
-        const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
-        const page = await pdf.getPage(1);
-        const canvas = document.getElementById('pdf-canvas');
-        const context = canvas.getContext('2d');
-        const viewport = page.getViewport({ scale: 1.5 });
-
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-
-        await page.render({ canvasContext: context, viewport: viewport }).promise;
-    }
-
-    renderPDF();
-</script>
-
+    <h3>CONTROLLER DESIGN AND PROCESS SIMULATION USING MATLAB/SIMULINK</h3>
+    <iframe src="PDF/hussein coures work.pdf" width="100%" height="600px"></iframe>
+    </section>
 
     <section id="computer vision" class="container">
             <h2>computer vision</h2>
@@ -134,5 +108,4 @@
     </footer>
 </body>
 </html>
-
 
