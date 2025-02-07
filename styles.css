@@ -17,8 +17,8 @@ body {
 /* Header */
 header {
     background-color: #0d287c;
-    color: #fff;
-    padding: 20px;
+    color: #082481;
+    padding: 40px 20px;
     text-align: center;
 }
 
@@ -34,9 +34,13 @@ header p {
 
 /* Container */
 .container {
-    width: 80%;
+    width: 90%;
     max-width: 1200px;
     margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Sections */
@@ -45,11 +49,23 @@ section {
 }
 
 h2 {
-    color: #050505;
-    border-bottom: 2px solid #333;
+    color: #0d287c;
+    border-bottom: 2px solid #0d287c;
     padding-bottom: 10px;
     margin-bottom: 20px;
     font-size: 2rem;
+}
+
+h3 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+h4 {
+    color: #555;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
 }
 
 /* Lists */
@@ -65,17 +81,12 @@ ul li {
 
 /* Projects */
 .project {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
-.project h3 {
-    color: #333;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+.project p {
+    margin-bottom: 15px;
+    line-height: 1.6;
 }
 
 /* Images */
@@ -84,6 +95,7 @@ ul li {
     flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .image-container img {
@@ -91,16 +103,32 @@ ul li {
     height: auto;
     border: 1px solid #ddd;
     border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Video */
 video {
     width: 100%;
     height: auto;
-    margin-top: 20px;
+    margin-bottom: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* PDF Container */
+.pdf-container {
+    width: 100%;
+    height: 600px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.pdf-container embed {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 /* Footer */
@@ -108,7 +136,8 @@ footer {
     text-align: center;
     background-color: #0d287c;
     color: #fff;
-    padding: 15px;
+    padding: 20px;
+    margin-top: 40px;
 }
 
 footer p {
@@ -130,54 +159,16 @@ footer p {
         font-size: 1.5rem;
     }
 
-    ul li {
-        font-size: 0.9rem;
-    }
-
-    .project h3 {
+    h3 {
         font-size: 1.25rem;
     }
 
     .container {
-        width: 90%;
+        width: 95%;
+        padding: 15px;
+    }
+
+    .pdf-container {
+        height: 400px;
     }
 }
-
-    h2, h3 {
-        color: #333;
-    }
-<
-style, >
-iframe {
-        width: 100%;
-        height: calc(100vh - 100px); /* Adjust height dynamically */
-        border: none;
-    }
-</
-style, >
-
-<  style, >
-body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-        .pdf-container {
-            width: 90%;
-            max-width: 800px;
-            height: 90vh;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-        }
-        .pdf-container embed, .pdf-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    </style>
