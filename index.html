@@ -1,134 +1,436 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hiba.Tech - Mechatronics Engineer Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hussein Ahmed — Mechatronics Portfolio</title>
+  <meta name="description" content="Portfolio of Hussein Ahmed — Mechatronics & Robotics Engineer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f16;
+      --card:#111827;
+      --muted:#9aa4b2;
+      --text:#e5e7eb;
+      --brand:#5eead4;
+      --brand-2:#60a5fa;
+      --ring: 0 0 0 1.5px rgba(94,234,212,.35), 0 8px 30px rgba(94,234,212,.08);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius-lg: 28px;
+      --max: 1150px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+      color:var(--text);
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(96,165,250,.08), transparent 40%),
+                  radial-gradient(900px 500px at 110% -20%, rgba(94,234,212,.08), transparent 45%),
+                  var(--bg);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      scroll-behavior:smooth;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:100%;max-width:var(--max);margin:0 auto;padding:0 20px}
+
+    /* NAV */
+    .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:rgba(11,15,22,.55); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.3px}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(45deg,var(--brand),var(--brand-2));box-shadow:0 0 0 3px rgba(94,234,212,.15)}
+    .menu{display:flex;gap:18px}
+    .menu a{opacity:.9}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));box-shadow:var(--ring);transition:.2s transform}
+    .btn:hover{transform:translateY(-2px)}
+    .btn.primary{background:linear-gradient(180deg, rgba(94,234,212,.18), rgba(94,234,212,.06));border-color:rgba(94,234,212,.35)}
+    .hamb{display:none}
+    .hamb button{all:unset;cursor:pointer;border:1px solid rgba(255,255,255,.12);width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02))}
+    .drawer{display:none;flex-direction:column;gap:10px;padding:12px 0}
+    .drawer a{padding:10px 0;border-top:1px solid rgba(255,255,255,.06)}
+
+    /* HERO */
+    .hero{position:relative;min-height:72vh;display:grid;place-items:center;overflow:hidden}
+    .hero::before{
+      content:"";position:absolute;inset:0;opacity:.55;
+      background:
+        radial-gradient(900px 400px at 70% 20%, rgba(96,165,250,.20), transparent 40%),
+        radial-gradient(700px 400px at 20% 80%, rgba(94,234,212,.18), transparent 40%),
+        url('images/darlab_robot_banner.png') center/cover no-repeat; /* change path if needed */
+      filter: contrast(.95) brightness(.8) saturate(1.05); z-index:-2;
+    }
+    .hero .overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(11,15,22,.75), rgba(11,15,22,.35) 40%, transparent 70%);z-index:-1}
+    .hero-inner{text-align:center;padding:90px 0 40px}
+    .kicker{letter-spacing:.25em;color:var(--muted);text-transform:uppercase;font-size:.78rem}
+    h1{font-size:clamp(2rem, 4vw + 1rem, 3.4rem);margin:.4rem 0 .6rem;line-height:1.1}
+    .lead{max-width:780px;margin:0 auto;color:#cbd5e1}
+    .cta{margin-top:1.4rem;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .type{display:inline-block;min-width:8ch;border-right:2px solid var(--brand);white-space:nowrap;overflow:hidden}
+
+    /* Sections */
+    section{padding:70px 0}
+    section .title{font-size:clamp(1.6rem, 2.2vw + .6rem, 2.2rem);margin:0 0 24px;font-weight:800;letter-spacing:.3px}
+    .grid{display:grid;gap:20px}
+
+    /* ABOUT */
+    .about{display:grid;gap:28px;grid-template-columns:1.2fr .8fr;align-items:center}
+    .about .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow)}
+    .portrait{width:100%;aspect-ratio:1/1.1;border-radius:var(--radius-lg);object-fit:cover;border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+
+    /* EXPERIENCE */
+    .xp-card{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}
+    .xp-media{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.02)}
+    .xp-caption{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:rgba(11,15,22,.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.16);padding:.8rem 1.2rem;border-radius:999px;box-shadow:var(--ring)}
+    .xp-text{margin-top:18px;color:#cbd5e1;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.06);padding:18px;border-radius:var(--radius)}
+
+    /* PROJECTS */
+    .projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+    .project{display:flex;flex-direction:column;height:100%;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.22s transform, .22s box-shadow}
+    .project:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(0,0,0,.35)}
+    .project .content{padding:16px}
+    .project h3{margin:0 0 10px}
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+    .tag{font-size:.72rem;letter-spacing:.04em;color:#94a3b8;border:1px solid rgba(255,255,255,.14);padding:.18rem .5rem;border-radius:999px}
+
+    /* Media blocks */
+    .media{width:100%;background:#0f1623;border-top:1px solid rgba(255,255,255,.06)}
+    .media .frame{width:100%;aspect-ratio:16/10;border:0}
+    .image-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:10px}
+    .image-grid img{width:100%;height:180px;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.08)}
+    .video-wrap{padding:10px;display:grid;gap:10px}
+    .video-wrap video{width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#000}
+    .thumb{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+
+    /* EDUCATION (clickable cards + proper image sizing) */
+    .logo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .logo{
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+      aspect-ratio:16/10;border-radius:var(--radius);background:#0f1623;border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);padding:10px;text-decoration:none;color:inherit;transition:transform .2s ease
+    }
+    .logo img{max-width:90%;max-height:70px;object-fit:contain;margin-bottom:8px}
+    .logo span{font-size:.92rem;color:var(--muted);text-align:center}
+    .logo small{font-size:.78rem;color:#7b8794}
+    .logo:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+
+    /* SKILLS */
+    .skills{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .skill{display:grid;place-items:center;text-align:center;gap:10px;padding:18px;border-radius:var(--radius);border:1px dashed rgba(255,255,255,.14);background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01))}
+    .skill .ico{font-size:36px}
+    .muted{color:var(--muted)}
+
+    /* CONTACT */
+    .contact{text-align:center;padding:60px 0 90px}
+    .social{display:flex;justify-content:center;gap:12px;margin-top:10px}
+    .icon-btn{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.14);background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));box-shadow:var(--ring)}
+    footer{text-align:center;color:#9aa4b2;padding:26px 0;border-top:1px solid rgba(255,255,255,.06)}
+
+    /* Responsive */
+    @media (max-width: 1100px){
+      .projects{grid-template-columns:1fr}
+      .image-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .image-grid img{height:160px}
+    }
+    @media (max-width: 640px){
+      .image-grid{grid-template-columns:1fr}
+      .image-grid img{height:200px}
+      .menu{display:none}
+      .hamb{display:block}
+      .drawer.open{display:flex}
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Welcome to Hiba.Tech</h1>
-            <p>Mechatronics Engineer | Robotics Enthusiast</p>
-        </div>
-    </header>
 
-    <section id="about" class="container">
-        <h2>About Me</h2>
-        <p>Hello, I'm Hussein Ahmad, a Mechatronics Engineer with a passion for creating innovative solutions in automation and robotics. I am constantly seeking opportunities to learn, grow, and apply my skills in designing integrated systems that improve efficiency and functionality across various industries.</p>
+  <!-- NAV -->
+  <nav class="nav" aria-label="Main">
+    <div class="container nav-inner">
+      <div class="brand"><span class="dot"></span> Hussein Ahmed</div>
+      <div class="menu" role="menubar" aria-label="Primary">
+        <a href="#about" role="menuitem">About</a>
+        <a href="#work" role="menuitem">Experience</a>
+        <a href="#education" role="menuitem">Education</a>
+        <a href="#projects" role="menuitem">Projects</a>
+        <a href="#skills" role="menuitem">Skills</a>
+        <a class="btn" href="#contact" role="menuitem">Contact</a>
+      </div>
+      <div class="hamb">
+        <button id="hambBtn" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#e5e7eb" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="drawer" class="container drawer" role="menu" aria-label="Mobile">
+      <a href="#about">About</a>
+      <a href="#work">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="container hero-inner">
+      <div class="kicker">Mechatronics • Robotics • Control</div>
+      <h1>Hi, I am <span style="color:var(--brand)">Hussein</span> Ahmed</h1>
+      <p class="lead">I am a <span id="typewriter" class="type"></span></p>
+      <p class="lead">Robotics/Mechatronics engineer focused on autonomous systems, digital twins, and human-robot interaction. I build things that move — then teach them to think.</p>
+      <div class="cta">
+        <a class="btn primary" href="#contact">Connect with me</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <h2 class="title">About</h2>
+        <div class="about">
+          <article class="card">
+            <p>
+              I am Hussein Ahmed, a Mechatronics and Robotics Engineer specializing in automation, IoT, and control systems.
+              I have experience with sensor integration, microcontrollers, and cloud platforms, as well as projects ranging from smart home automation to robotic arm design.
+              Skilled in CAD and simulation software, I aim to leverage my expertise to create innovative robotics and automation solutions that enhance efficiency and everyday life.
+            </p>
+          </article>
+          <img class="portrait" src="images/AF4A2515%20(4).JPG" alt="Portrait" loading="lazy" />
+        </div>
+      </div>
     </section>
 
-    <section id="skills" class="container">
-        <h2>Skills</h2>
-        <ul>
-            <li>Robotics Programming</li>
-            <li>Embedded Systems</li>
-            <li>Control Systems</li>
-            <li>Mechanical Design</li>
-            <li>Python Programming</li>
-            <li>Computer Vision</li>
-            <li>Hydraulic Systems</li>
-        </ul>
+    <!-- EXPERIENCE -->
+    <section id="work">
+      <div class="container">
+        <h2 class="title">Experience</h2>
+        <div class="xp-card">
+          <img class="xp-media" src="https://images.unsplash.com/photo-1581093588401-16ec0c45e834?q=80&w=1600&auto=format&fit=crop" alt="Robotics Lab" loading="lazy" />
+          <div class="xp-caption">Simulation, control, and deployment pipelines</div>
+        </div>
+        <div class="xp-text">
+          Experience across simulation, embedded systems, and software-in-the-loop testing for robotics applications,
+          focusing on high-fidelity environments, sensor modeling, and reliable deployment.
+        </div>
+      </div>
     </section>
 
-    <section id="projects" class="container">
-        <h2>Projects</h2>
-
-        <!-- Industrial Automation Logic Control System -->
-        <div class="project">
-            <h3>Industrial Automation Logic Control System Documentation</h3>
-            <div class="pdf-container">
-                <embed src="PDF/T.pdf" type="application/pdf">
-            </div>
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="container">
+        <h2 class="title">Education</h2>
+        <div class="logo-grid grid">
+          <a class="logo" href="https://www.susu.ru/en" target="_blank" rel="noopener">
+            <img alt="South Ural State University" src="images/290.png">
+            <span>South Ural State University</span>
+            <small>Bachelor — Mechatronics & Robotics Engineering</small>
+          </a>
+          <a class="logo" href="https://en.wikipedia.org/wiki/Robotics" target="_blank" rel="noopener">
+            <img alt="Robotics" src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Robot-icon.svg">
+            <span>Robotics</span>
+            <small>Computer Vision • Control • HRI</small>
+          </a>
+          <a class="logo" href="https://en.wikipedia.org/wiki/Engineering" target="_blank" rel="noopener">
+            <img alt="Engineering" src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Mechanical_engineering_icon.png">
+            <span>Engineering</span>
+            <small>Mechanics • CAD • Systems</small>
+          </a>
         </div>
-
-        <!-- Hydraulic Rotary Drive -->
-        <div class="project">
-            <h3>Design and Analysis of Hydraulic Rotary Drive</h3>
-            <div class="pdf-container">
-                <embed src="PDF/course work hydrolic (1).pdf" type="application/pdf">
-            </div>
-        </div>
-
-        <!-- Electrical Scheme of Conveyor -->
-        <div class="project">
-            <h3>Designing of Electrical Scheme of Conveyor</h3>
-            <div class="image-container">
-                <img src="images/Course work Hussein (1)_page-0001.jpg" alt="Design 1">
-                <img src="images/Course work Hussein (1)_page-0002.jpg" alt="Design 2">
-                <img src="images/Course work Hussein (1)_page-0003.jpg" alt="Design 3">
-                <img src="images/Course work Hussein (1)_page-0004.jpg" alt="Design 4">
-                <img src="images/Course work Hussein (1)_page-0005.jpg" alt="Design 5">
-                <img src="images/Course work Hussein (1)_page-0006.jpg" alt="Design 6">
-            </div>
-        </div>
-
-        <!-- Robotic Arm Control System -->
-        <div class="project">
-            <h3>Robotic Arm Control System</h3>
-            <p>This project involves designing a robotic arm in SolidWorks, integrating it into Unity for visualization, and controlling its movements through MATLAB. The aim is to automate tasks and improve precision in various industrial applications.</p>
-            <div class="image-container">
-                <img src="images/hussein 3_page-0001.jpg" alt="Robotic Arm Design 1">
-                <img src="images/hussein 3_page-0002.jpg" alt="Robotic Arm Design 2">
-                <img src="images/hussein 3_page-0003.jpg" alt="Robotic Arm Design 3">
-                <img src="images/hussein 3_page-0004.jpg" alt="Robotic Arm Design 4">
-                <img src="images/hussein 3_page-0005.jpg" alt="Robotic Arm Design 5">
-                <img src="images/hussein 3_page-0006.jpg" alt="Robotic Arm Design 6">
-            </div>
-            <h4>Simulation in SolidWorks</h4>
-            <video controls>
-                <source src="videos/hussein 5.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <h4>Control with MATLAB</h4>
-            <video controls>
-                <source src="videos/20230106_164433 (1).mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <video controls>
-                <source src="videos/20221128_163037.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
-        <!-- Cylinder Engine -->
-        <div class="project">
-            <h3>Cylinder Engine</h3>
-            <p>Designed in SolidWorks</p>
-            <video controls>
-                <source src="videos/video5433997454737432196.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
-        <!-- Automation System -->
-        <div class="project">
-            <h3>Controller Design and Process Simulation using MATLAB/Simulink</h3>
-            <div class="pdf-container">
-                <embed src="PDF/hussein coures work.pdf" type="application/pdf">
-            </div>
-        </div>
-
-        <!-- Computer Vision -->
-        <div class="project">
-            <h3>Computer Vision</h3>
-            <video controls>
-                <source src="videos/whatsapp-video-2024-10-27-at-124528-pm_Zgamy7ZK (1).mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
+      </div>
     </section>
 
-    <section id="contact" class="container">
-        <h2>Contact</h2>
-        <p>If you are interested in collaborating or want to discuss any projects, feel free to get in touch!</p>
-        <p>Email: <a href="mailto:ha412904@gmail.com">ha412904@gmail.com</a></p>
+    <!-- PROJECTS (now using your real files) -->
+    <section id="projects">
+      <div class="container">
+        <h2 class="title">Projects</h2>
+
+        <div class="projects">
+
+          <!-- Industrial Automation Logic Control System Documentation (PDF/T.pdf) -->
+          <article class="project">
+            <div class="content">
+              <h3>Industrial Automation Logic Control System — Documentation</h3>
+              <p class="muted">Technical report on industrial automation logic and controls.</p>
+              <div class="tags"><span class="tag">PLC</span><span class="tag">Automation</span><span class="tag">Docs</span></div>
+            </div>
+            <div class="media">
+              <iframe class="frame" src="PDF/T.pdf#view=FitH" title="Industrial Automation Logic Control System"></iframe>
+            </div>
+          </article>
+
+          <!-- Hydraulic Rotary Drive (PDF/course work hydrolic (1).pdf) -->
+          <article class="project">
+            <div class="content">
+              <h3>Design and Analysis of Hydraulic Rotary Drive</h3>
+              <p class="muted">Coursework covering modeling and analysis of a hydraulic rotary drive.</p>
+              <div class="tags"><span class="tag">Hydraulics</span><span class="tag">Modeling</span><span class="tag">Analysis</span></div>
+            </div>
+            <div class="media">
+              <iframe class="frame" src="PDF/course%20work%20hydrolic%20%281%29.pdf#view=FitH" title="Hydraulic Rotary Drive"></iframe>
+            </div>
+          </article>
+
+          <!-- Electrical Scheme of Conveyor (6 images) -->
+          <article class="project">
+            <div class="content">
+              <h3>Designing of Electrical Scheme of Conveyor</h3>
+              <p class="muted">Electrical design and documentation for conveyor control.</p>
+              <div class="tags"><span class="tag">Electrical</span><span class="tag">Schematics</span><span class="tag">Conveyor</span></div>
+            </div>
+            <div class="image-grid">
+              <img src="images/Course%20work%20Hussein%20%281%29_page-0001.jpg" alt="Conveyor 1">
+              <img src="images/Course%20work%20Hussein%20%281%29_page-0002.jpg" alt="Conveyor 2">
+              <img src="images/Course%20work%20Hussein%20%281%29_page-0003.jpg" alt="Conveyor 3">
+              <img src="images/Course%20work%20Hussein%20%281%29_page-0004.jpg" alt="Conveyor 4">
+              <img src="images/Course%20work%20Hussein%20%281%29_page-0005.jpg" alt="Conveyor 5">
+              <img src="images/Course%20work%20Hussein%20%281%29_page-0006.jpg" alt="Conveyor 6">
+            </div>
+          </article>
+
+          <!-- Robotic Arm Control System (images + videos) -->
+          <article class="project">
+            <div class="content">
+              <h3>Robotic Arm — Design • Simulation • Control</h3>
+              <p class="muted">SolidWorks modeling, Unity visualization, and MATLAB-based control experiments.</p>
+              <div class="tags"><span class="tag">SolidWorks</span><span class="tag">Unity</span><span class="tag">MATLAB</span><span class="tag">Kinematics</span></div>
+            </div>
+            <div class="image-grid">
+              <img src="images/hussein%203_page-0001.jpg" alt="Robotic Arm 1">
+              <img src="images/hussein%203_page-0002.jpg" alt="Robotic Arm 2">
+              <img src="images/hussein%203_page-0003.jpg" alt="Robotic Arm 3">
+              <img src="images/hussein%203_page-0004.jpg" alt="Robotic Arm 4">
+              <img src="images/hussein%203_page-0005.jpg" alt="Robotic Arm 5">
+              <img src="images/hussein%203_page-0006.jpg" alt="Robotic Arm 6">
+            </div>
+            <div class="video-wrap">
+              <video controls src="videos/hussein%205.mp4"></video>
+              <video controls src="videos/20230106_164433%20%281%29.mp4"></video>
+              <video controls src="videos/20221128_163037.mp4"></video>
+            </div>
+          </article>
+
+          <!-- Cylinder Engine (video) -->
+          <article class="project">
+            <div class="content">
+              <h3>Cylinder Engine</h3>
+              <p class="muted">Concept and motion demonstration modeled in SolidWorks.</p>
+              <div class="tags"><span class="tag">CAD</span><span class="tag">Mechanisms</span></div>
+            </div>
+            <div class="video-wrap">
+              <video controls src="videos/video5433997454737432196.mp4"></video>
+            </div>
+          </article>
+
+          <!-- Controller Design & Process Simulation (PDF) -->
+          <article class="project">
+            <div class="content">
+              <h3>Controller Design & Process Simulation (MATLAB/Simulink)</h3>
+              <p class="muted">Modeling, controller design, and closed-loop simulation for an industrial process.</p>
+              <div class="tags"><span class="tag">Simulink</span><span class="tag">Control</span><span class="tag">Modeling</span></div>
+            </div>
+            <div class="media">
+              <iframe class="frame" src="PDF/hussein%20coures%20work.pdf#view=FitH" title="Controller Design & Process Simulation"></iframe>
+            </div>
+          </article>
+
+          <!-- Computer Vision (video) -->
+          <article class="project">
+            <div class="content">
+              <h3>Computer Vision</h3>
+              <p class="muted">Object detection and tracking demo.</p>
+              <div class="tags"><span class="tag">OpenCV</span><span class="tag">Python</span></div>
+            </div>
+            <div class="video-wrap">
+              <video controls src="videos/whatsapp-video-2024-10-27-at-124528-pm_Zgamy7ZK%20%281%29.mp4"></video>
+            </div>
+          </article>
+
+        </div>
+      </div>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Hiba.Tech - All Rights Reserved</p>
-    </footer>
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="title">Skills</h2>
+        <div class="skills grid">
+          <div class="skill"><div class="ico">🧠</div><div><b>Python, MATLAB, R</b><div class="muted">NumPy • SciPy • RL</div></div></div>
+          <div class="skill"><div class="ico">🧩</div><div><b>C, C++, C#, CUDA</b><div class="muted">High-perf & Sim</div></div></div>
+          <div class="skill"><div class="ico">🤖</div><div><b>Arduino, Raspberry Pi, ESP8266</b><div class="muted">Embedded & IoT</div></div></div>
+          <div class="skill"><div class="ico">🧿</div><div><b>OpenCV, TensorFlow, PyTorch</b><div class="muted">CV • DL</div></div></div>
+          <div class="skill"><div class="ico">📐</div><div><b>SolidWorks, AutoCAD, Blender</b><div class="muted">CAD & 3D</div></div></div>
+          <div class="skill"><div class="ico">🛰️</div><div><b>ROS/ROS2, Gazebo</b><div class="muted">Robotics Stack</div></div></div>
+          <div class="skill"><div class="ico">🧪</div><div><b>Isaac Sim / Lab</b><div class="muted">Digital Twins</div></div></div>
+          <div class="skill"><div class="ico">✈️</div><div><b>UAV / Control</b><div class="muted">Flight & Guidance</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="title">Contact</h2>
+        <p class="muted">Let's chat about robots and automation projects.</p>
+        <p><a class="btn primary" href="mailto:ha412904@gmail.com">ha412904@gmail.com</a></p>
+        <div class="social">
+          <a class="icon-btn" href="#" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#e5e7eb" xmlns="http://www.w3.org/2000/svg"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.6-4.04-1.6-.55-1.38-1.34-1.75-1.34-1.75-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.22 1.84 1.22 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.62-2.8 5.65-5.48 5.95.43.37.81 1.09.81 2.2v3.26c0 .32.22.7.83.58A12 12 0 0 0 12 .5z"/></svg>
+          </a>
+          <a class="icon-btn" href="#" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#e5e7eb" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.4v1.56h.05c.47-.89 1.62-1.83 3.33-1.83 3.56 0 4.22 2.35 4.22 5.4v6.32zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.57V9h3.55v11.45z"/></svg>
+          </a>
+          <a class="icon-btn" href="#" aria-label="Email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#e5e7eb" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.01L12 13 4 6.01V6h16ZM4 18V8.24l7.4 6.58a1 1 0 0 0 1.2 0L20 8.24V18H4Z"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Made by Hussein Ahmed — © <span id="year"></span>
+  </footer>
+
+  <script>
+    // Typewriter effect
+    const roles = [
+      "Mechatronics Engineer",
+      "Robotics Developer",
+      "Control & Simulation Engineer",
+      "ROS / Isaac Sim Enthusiast"
+    ];
+    const el = document.getElementById("typewriter");
+    let idx = 0, ch = 0, dir = 1, hold = 0;
+    function tick(){
+      const word = roles[idx];
+      if(dir === 1){ ch++; if(ch === word.length + 8){ dir = -1; hold = 0; } }
+      else { if(hold < 6){ hold++; } else { ch--; if(ch === 0){ dir = 1; idx = (idx+1) % roles.length; } } }
+      el.textContent = word.slice(0, Math.max(0, Math.min(ch, word.length)));
+      setTimeout(tick, 70);
+    }
+    tick();
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile drawer
+    const hambBtn = document.getElementById('hambBtn');
+    const drawer = document.getElementById('drawer');
+    hambBtn?.addEventListener('click', () => {
+      const open = drawer.classList.toggle('open');
+      hambBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  </script>
 </body>
 </html>
+
