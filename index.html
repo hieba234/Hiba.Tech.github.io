@@ -28,9 +28,10 @@
       margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
       color:var(--text);
-      background: radial-gradient(1200px 600px at 20% -10%, rgba(96,165,250,.08), transparent 40%),
-                  radial-gradient(900px 500px at 110% -20%, rgba(94,234,212,.08), transparent 45%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(96,165,250,.08), transparent 40%),
+        radial-gradient(900px 500px at 110% -20%, rgba(94,234,212,.08), transparent 45%),
+        var(--bg);
       line-height:1.6;
       -webkit-font-smoothing:antialiased;
       scroll-behavior:smooth;
@@ -53,15 +54,17 @@
     .drawer{display:none;flex-direction:column;gap:10px;padding:12px 0}
     .drawer a{padding:10px 0;border-top:1px solid rgba(255,255,255,.06)}
 
-    /* HERO */
+    /* HERO — same layering as your reference */
     .hero{position:relative;min-height:72vh;display:grid;place-items:center;overflow:hidden}
     .hero::before{
       content:"";position:absolute;inset:0;opacity:.55;
       background:
         radial-gradient(900px 400px at 70% 20%, rgba(96,165,250,.20), transparent 40%),
         radial-gradient(700px 400px at 20% 80%, rgba(94,234,212,.18), transparent 40%),
-        url('images/darlab_robot_banner.png') center/cover no-repeat; /* change path if needed */
-      filter: contrast(.95) brightness(.8) saturate(1.05); z-index:-2;
+        /* ↓↓↓ CHANGE THIS IF YOUR IMAGE PATH IS DIFFERENT ↓↓↓ */
+        url('images/darlab_robot_banner.png') center/cover no-repeat;
+      filter: contrast(.95) brightness(.8) saturate(1.05);
+      z-index:-2; /* sits behind content + overlay */
     }
     .hero .overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(11,15,22,.75), rgba(11,15,22,.35) 40%, transparent 70%);z-index:-1}
     .hero-inner{text-align:center;padding:90px 0 40px}
@@ -73,7 +76,7 @@
 
     /* Sections */
     section{padding:70px 0}
-    section .title{font-size:clamp(1.6rem, 2.2vw + .6rem, 2.2rem);margin:0 0 24px;font-weight:800;letter-spacing:.3px}
+    section .title{font-size:clamp(1.6rem, 2.2vw + .6rem, 2.2rem);margin:0 0 24px;font-weight:800;letter-spacing:.3px;text-align:center}
     .grid{display:grid;gap:20px}
 
     /* ABOUT */
@@ -81,11 +84,17 @@
     .about .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow)}
     .portrait{width:100%;aspect-ratio:1/1.1;border-radius:var(--radius-lg);object-fit:cover;border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 60px rgba(0,0,0,.45)}
 
-    /* EXPERIENCE */
-    .xp-card{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}
-    .xp-media{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.02)}
-    .xp-caption{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:rgba(11,15,22,.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.16);padding:.8rem 1.2rem;border-radius:999px;box-shadow:var(--ring)}
-    .xp-text{margin-top:18px;color:#cbd5e1;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.06);padding:18px;border-radius:var(--radius)}
+    /* EDUCATION */
+    .logo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+    .logo{
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+      aspect-ratio:16/10;border-radius:var(--radius);background:#0f1623;border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);padding:10px;text-decoration:none;color:inherit;transition:transform .2s ease
+    }
+    .logo img{max-width:90%;max-height:70px;object-fit:contain;margin-bottom:8px}
+    .logo span{font-size:.92rem;color:var(--muted);text-align:center}
+    .logo small{font-size:.78rem;color:#7b8794}
+    .logo:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.35)}
 
     /* PROJECTS */
     .projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
@@ -103,25 +112,26 @@
     .image-grid img{width:100%;height:180px;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.08)}
     .video-wrap{padding:10px;display:grid;gap:10px}
     .video-wrap video{width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#000}
-    .thumb{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
 
-    /* EDUCATION (clickable cards + proper image sizing) */
-    .logo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .logo{
-      display:flex;flex-direction:column;justify-content:center;align-items:center;
-      aspect-ratio:16/10;border-radius:var(--radius);background:#0f1623;border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--shadow);padding:10px;text-decoration:none;color:inherit;transition:transform .2s ease
+    /* SKILLS: emoji cards */
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:20px;
     }
-    .logo img{max-width:90%;max-height:70px;object-fit:contain;margin-bottom:8px}
-    .logo span{font-size:.92rem;color:var(--muted);text-align:center}
-    .logo small{font-size:.78rem;color:#7b8794}
-    .logo:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.35)}
-
-    /* SKILLS */
-    .skills{grid-template-columns:repeat(4,minmax(0,1fr))}
-    .skill{display:grid;place-items:center;text-align:center;gap:10px;padding:18px;border-radius:var(--radius);border:1px dashed rgba(255,255,255,.14);background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01))}
-    .skill .ico{font-size:36px}
-    .muted{color:var(--muted)}
+    .skill-card{
+      background:#111827;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      text-align:center;
+      padding:26px 16px;
+      transition:.25s transform, .25s box-shadow;
+      box-shadow:0 6px 20px rgba(0,0,0,.25);
+    }
+    .skill-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,.35)}
+    .skill-card .emoji{font-size:2rem;margin-bottom:10px}
+    .skill-card h3{margin:6px 0 4px;font-size:1.05rem;color:#f3f4f6}
+    .skill-card p{margin:0;color:#9ca3af;font-size:.86rem;line-height:1.4}
 
     /* CONTACT */
     .contact{text-align:center;padding:60px 0 90px}
@@ -135,6 +145,7 @@
       .image-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .image-grid img{height:160px}
     }
+    @media (max-width: 800px){ .about{grid-template-columns:1fr} }
     @media (max-width: 640px){
       .image-grid{grid-template-columns:1fr}
       .image-grid img{height:200px}
@@ -152,7 +163,6 @@
       <div class="brand"><span class="dot"></span> Hussein Ahmed</div>
       <div class="menu" role="menubar" aria-label="Primary">
         <a href="#about" role="menuitem">About</a>
-        <a href="#work" role="menuitem">Experience</a>
         <a href="#education" role="menuitem">Education</a>
         <a href="#projects" role="menuitem">Projects</a>
         <a href="#skills" role="menuitem">Skills</a>
@@ -168,7 +178,6 @@
     </div>
     <div id="drawer" class="container drawer" role="menu" aria-label="Mobile">
       <a href="#about">About</a>
-      <a href="#work">Experience</a>
       <a href="#education">Education</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
@@ -209,21 +218,6 @@
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="work">
-      <div class="container">
-        <h2 class="title">Experience</h2>
-        <div class="xp-card">
-          <img class="xp-media" src="https://images.unsplash.com/photo-1581093588401-16ec0c45e834?q=80&w=1600&auto=format&fit=crop" alt="Robotics Lab" loading="lazy" />
-          <div class="xp-caption">Simulation, control, and deployment pipelines</div>
-        </div>
-        <div class="xp-text">
-          Experience across simulation, embedded systems, and software-in-the-loop testing for robotics applications,
-          focusing on high-fidelity environments, sensor modeling, and reliable deployment.
-        </div>
-      </div>
-    </section>
-
     <!-- EDUCATION -->
     <section id="education">
       <div class="container">
@@ -234,28 +228,39 @@
             <span>South Ural State University</span>
             <small>Bachelor — Mechatronics & Robotics Engineering</small>
           </a>
-          <a class="logo" href="https://en.wikipedia.org/wiki/Robotics" target="_blank" rel="noopener">
-            <img alt="Robotics" src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Robot-icon.svg">
+          <a class="logo" href="https://www.coursera.org/learn/robotics-flight" target="_blank" rel="noopener">
+            <img alt="Robotics: Aerial Robotics" src="images/6725bf0a62b50-Coursera.png">
             <span>Robotics</span>
-            <small>Computer Vision • Control • HRI</small>
-          </a>
-          <a class="logo" href="https://en.wikipedia.org/wiki/Engineering" target="_blank" rel="noopener">
-            <img alt="Engineering" src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Mechanical_engineering_icon.png">
-            <span>Engineering</span>
-            <small>Mechanics • CAD • Systems</small>
+            <small>Computer Vision • Aerial Robotics</small>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS (now using your real files) -->
+    <!-- PROJECTS -->
     <section id="projects">
       <div class="container">
         <h2 class="title">Projects</h2>
 
         <div class="projects">
 
-          <!-- Industrial Automation Logic Control System Documentation (PDF/T.pdf) -->
+          <!-- FINAL THESIS -->
+          <article class="project">
+            <div class="content">
+              <h3>Final Thesis — Smart Home Automation System Using IoT</h3>
+              <p class="muted">
+                Built an Arduino/NodeMCU system integrating DHT11, PIR, and flame sensors for real-time monitoring, remote control,
+                safety alerts, and ~15% energy savings. Cloud dashboard for visualization and control.
+              </p>
+              <div class="tags">
+                <span class="tag">Arduino</span><span class="tag">ESP8266</span><span class="tag">MQTT</span><span class="tag">Cloud Dashboard</span>
+              </div>
+            </div>
+            <!-- Optionally embed your thesis PDF here -->
+             <div class="media"><iframe class="frame" src="smart_Home_thesis 22.pdf#view=FitH"></iframe></div>
+          </article>
+
+          <!-- Industrial Automation Logic Control System (PDF/T.pdf) -->
           <article class="project">
             <div class="content">
               <h3>Industrial Automation Logic Control System — Documentation</h3>
@@ -267,11 +272,11 @@
             </div>
           </article>
 
-          <!-- Hydraulic Rotary Drive (PDF/course work hydrolic (1).pdf) -->
+          <!-- Hydraulic Rotary Drive -->
           <article class="project">
             <div class="content">
               <h3>Design and Analysis of Hydraulic Rotary Drive</h3>
-              <p class="muted">Coursework covering modeling and analysis of a hydraulic rotary drive.</p>
+              <p class="muted">Modeling and analysis of a hydraulic rotary drive mechanism in SolidWorks.</p>
               <div class="tags"><span class="tag">Hydraulics</span><span class="tag">Modeling</span><span class="tag">Analysis</span></div>
             </div>
             <div class="media">
@@ -296,7 +301,7 @@
             </div>
           </article>
 
-          <!-- Robotic Arm Control System (images + videos) -->
+          <!-- Robotic Arm Control System -->
           <article class="project">
             <div class="content">
               <h3>Robotic Arm — Design • Simulation • Control</h3>
@@ -318,7 +323,7 @@
             </div>
           </article>
 
-          <!-- Cylinder Engine (video) -->
+          <!-- Cylinder Engine -->
           <article class="project">
             <div class="content">
               <h3>Cylinder Engine</h3>
@@ -330,7 +335,7 @@
             </div>
           </article>
 
-          <!-- Controller Design & Process Simulation (PDF) -->
+          <!-- Controller Design & Process Simulation -->
           <article class="project">
             <div class="content">
               <h3>Controller Design & Process Simulation (MATLAB/Simulink)</h3>
@@ -342,7 +347,7 @@
             </div>
           </article>
 
-          <!-- Computer Vision (video) -->
+          <!-- Computer Vision -->
           <article class="project">
             <div class="content">
               <h3>Computer Vision</h3>
@@ -358,19 +363,24 @@
       </div>
     </section>
 
-    <!-- SKILLS -->
+    <!-- SKILLS (emoji cards) -->
     <section id="skills">
       <div class="container">
         <h2 class="title">Skills</h2>
-        <div class="skills grid">
-          <div class="skill"><div class="ico">🧠</div><div><b>Python, MATLAB, R</b><div class="muted">NumPy • SciPy • RL</div></div></div>
-          <div class="skill"><div class="ico">🧩</div><div><b>C, C++, C#, CUDA</b><div class="muted">High-perf & Sim</div></div></div>
-          <div class="skill"><div class="ico">🤖</div><div><b>Arduino, Raspberry Pi, ESP8266</b><div class="muted">Embedded & IoT</div></div></div>
-          <div class="skill"><div class="ico">🧿</div><div><b>OpenCV, TensorFlow, PyTorch</b><div class="muted">CV • DL</div></div></div>
-          <div class="skill"><div class="ico">📐</div><div><b>SolidWorks, AutoCAD, Blender</b><div class="muted">CAD & 3D</div></div></div>
-          <div class="skill"><div class="ico">🛰️</div><div><b>ROS/ROS2, Gazebo</b><div class="muted">Robotics Stack</div></div></div>
-          <div class="skill"><div class="ico">🧪</div><div><b>Isaac Sim / Lab</b><div class="muted">Digital Twins</div></div></div>
-          <div class="skill"><div class="ico">✈️</div><div><b>UAV / Control</b><div class="muted">Flight & Guidance</div></div></div>
+        <div class="skills-grid">
+          <div class="skill-card"><div class="emoji">🧠</div><h3>PLC Programming</h3><p>Siemens TIA Portal • Allen-Bradley RSLogix</p></div>
+          <div class="skill-card"><div class="emoji">🖥️</div><h3>SCADA / HMI</h3><p>WinCC • Wonderware</p></div>
+          <div class="skill-card"><div class="emoji">🔗</div><h3>Industrial Comms</h3><p>Modbus • Profibus • EtherNet/IP</p></div>
+          <div class="skill-card"><div class="emoji">🧰</div><h3>Panel Wiring & CAD</h3><p>EPLAN • Schematics • Troubleshooting</p></div>
+          <div class="skill-card"><div class="emoji">⚡</div><h3>Motor Drives</h3><p>VFD • Servo • Stepper</p></div>
+          <div class="skill-card"><div class="emoji">🛰️</div><h3>Sensors & Instrumentation</h3><p>RTD • Thermocouple • Flow • Proximity</p></div>
+          <div class="skill-card"><div class="emoji">🤖</div><h3>Embedded & IoT</h3><p>Arduino • NodeMCU • ESP8266</p></div>
+          <div class="skill-card"><div class="emoji">📊</div><h3>Control & Simulation</h3><p>MATLAB / Simulink</p></div>
+          <div class="skill-card"><div class="emoji">📐</div><h3>Mechanical Design</h3><p>SolidWorks (CAD)</p></div>
+          <div class="skill-card"><div class="emoji">☁️</div><h3>IoT Dashboards</h3><p>Cloud Integration & Visualization</p></div>
+          <div class="skill-card"><div class="emoji">🐍</div><h3>Python</h3><p>Computer Vision (OpenCV)</p></div>
+          <div class="skill-card"><div class="emoji">💻</div><h3>C / C++</h3><p>Microcontrollers & Firmware</p></div>
+          <div class="skill-card"><div class="emoji">🗣️</div><h3>Languages</h3><p>English • Russian • Arabic • German</p></div>
         </div>
       </div>
     </section>
@@ -402,7 +412,7 @@
   </footer>
 
   <script>
-    // Typewriter effect
+    // Simple typewriter (matches your previous reference behavior)
     const roles = [
       "Mechatronics Engineer",
       "Robotics Developer",
