@@ -108,6 +108,10 @@
     /* Media blocks */
     .media{width:100%;background:#0f1623;border-top:1px solid rgba(255,255,255,.06)}
     .media .frame{width:100%;aspect-ratio:16/10;border:0}
+    .media img.frame{
+  object-fit:contain;
+  background:#0f1623; /* same dark background as the other frames */
+}
     .image-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:10px}
     .image-grid img{width:100%;height:180px;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.08)}
     .video-wrap{padding:10px;display:grid;gap:10px}
@@ -238,11 +242,67 @@
     </section>
 
     <!-- PROJECTS -->
+
     <section id="projects">
       <div class="container">
         <h2 class="title">Projects</h2>
+        <!-- Thread plate -->
+<article class="project">
+  <div class="content">
+    <h3>CAD Project — Thread Plate With High-Density Drill Pattern</h3>
+    <p class="muted">
+      Precision plate designed with a dense array of drilled and threaded holes according to GOST standards.
+    </p>
+    <div class="tags">
+      <span class="tag">CAD</span><span class="tag">Mechanical Design</span><span class="tag">GOST</span>
+    </div>
+  </div>
+  <div class="media">
+    <img src="images/cad/bk020-thread-plate.jpg"
+         alt="Thread plate CAD drawing"
+         class="frame">
+  </div>
+</article>
+
+<!-- Block №20 assembly -->
+<article class="project">
+  <div class="content">
+    <h3>Assembly — Block №20 (Industrial CAD Assembly)</h3>
+    <p class="muted">
+      Complete 2D and 3D assembly including plates, supports and fastening elements.
+    </p>
+    <div class="tags">
+      <span class="tag">3D Assembly</span><span class="tag">CAD</span><span class="tag">GOST</span>
+    </div>
+  </div>
+  <div class="media">
+    <img src="images/cad/block20-drawing.jpg"
+         alt="Block 20 CAD assembly drawing"
+         class="frame">
+  </div>
+</article>
 
         <div class="projects">
+          <article class="project">
+  <div class="content">
+    <h3>CAD Project — Wear-Resistant Wall (HARDOX 500)</h3>
+    <p class="muted">
+      Detailed 2D manufacturing drawing of a HARDOX 500 structural wall, including tolerances,
+      surface roughness and contour geometry for industrial cutting.
+    </p>
+    <div class="tags">
+      <span class="tag">CAD</span><span class="tag">Manufacturing</span><span class="tag">GOST</span>
+    </div>
+  </div>
+
+  <div class="media">
+    <!-- use your actual file name here -->
+    <img src="images/cad/bk020-150-wall.jpg"
+         alt="HARDOX 500 wall CAD drawing"
+         class="frame">
+  </div>
+</article>
+
 
           <!-- FINAL THESIS -->
           <article class="project">
