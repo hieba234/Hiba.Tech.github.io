@@ -113,6 +113,22 @@
     .video-wrap{padding:10px;display:grid;gap:10px}
     .video-wrap video{width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#000}
 
+    /* CAD PDFs */
+    .pdf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+    .pdf-card{display:flex;flex-direction:column;height:100%;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.22s transform, .22s box-shadow}
+    .pdf-card:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(0,0,0,.35)}
+    .pdf-card .content{padding:16px}
+    .pdf-card h3{margin:0 0 10px}
+    .pdf-card .muted{color:var(--muted);margin:0}
+    .pdf-card .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;font-size:.85rem;color:#cbd5e1}
+    .pdf-card .meta span{display:inline-flex;align-items:center;gap:6px;padding:.2rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.02)}
+    .pdf-card .frame{width:100%;aspect-ratio:3/4;border:0;background:#0f1623;border-top:1px solid rgba(255,255,255,.06)}
+
+    /* CAD gallery */
+    .cad-gallery{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow);display:grid;gap:14px}
+    .cad-gallery h3{margin:0}
+    .cad-gallery p{margin:0;color:#cbd5e1}
+
     /* SKILLS: emoji cards */
     .skills-grid{
       display:grid;
@@ -165,6 +181,7 @@
         <a href="#about" role="menuitem">About</a>
         <a href="#education" role="menuitem">Education</a>
         <a href="#projects" role="menuitem">Projects</a>
+        <a href="#cad" role="menuitem">CAD Projects</a>
         <a href="#skills" role="menuitem">Skills</a>
         <a class="btn" href="#contact" role="menuitem">Contact</a>
       </div>
@@ -180,6 +197,7 @@
       <a href="#about">About</a>
       <a href="#education">Education</a>
       <a href="#projects">Projects</a>
+      <a href="#cad">CAD Projects</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </div>
@@ -366,6 +384,68 @@
     </section>
 
     <!-- SKILLS (emoji cards) -->
+    <section id="cad">
+      <div class="container">
+        <h2 class="title">CAD Projects</h2>
+        <div class="pdf-grid">
+          <article class="pdf-card">
+            <div class="content">
+              <h3>Hydraulic Rotary Drive — CAD Study</h3>
+              <p class="muted">Detailed modeling, calculations, and design considerations for a hydraulic rotary drive assembly.</p>
+              <div class="meta">
+                <span>📄 PDF</span>
+                <span>🛠️ SolidWorks</span>
+                <span>⚙️ Hydraulics</span>
+              </div>
+            </div>
+            <iframe class="frame" src="PDF/course%20work%20hydrolic%20%281%29.pdf#view=FitH" title="Hydraulic Rotary Drive PDF preview"></iframe>
+          </article>
+
+          <article class="pdf-card">
+            <div class="content">
+              <h3>Industrial Automation Logic Control</h3>
+              <p class="muted">Logic diagrams and component specifications for an automation controller build.</p>
+              <div class="meta">
+                <span>📄 PDF</span>
+                <span>🧠 PLC Logic</span>
+                <span>🔌 Control Panels</span>
+              </div>
+            </div>
+            <iframe class="frame" src="PDF/T.pdf#view=FitH" title="Industrial Automation Logic Control PDF preview"></iframe>
+          </article>
+
+          <article class="pdf-card">
+            <div class="content">
+              <h3>Controller Design & Process Simulation</h3>
+              <p class="muted">Simulink-based modeling with process schematics and closed-loop controller documentation.</p>
+              <div class="meta">
+                <span>📄 PDF</span>
+                <span>🧪 Simulation</span>
+                <span>📐 Control Theory</span>
+              </div>
+            </div>
+            <iframe class="frame" src="PDF/hussein%20coures%20work.pdf#view=FitH" title="Controller Design & Process Simulation PDF preview"></iframe>
+          </article>
+        </div>
+
+        <div class="cad-gallery" aria-label="Stamping die CAD gallery">
+          <div>
+            <h3>Stamping Die — CAD Illustrations</h3>
+            <p class="muted">Key views of a progressive stamping die, showing punch arrays, drilled plates, and assembly layout.</p>
+          </div>
+          <div class="image-grid">
+            <img src="images/cad-stamping-1.svg" alt="Stamping die section sketch">
+            <img src="images/cad-stamping-2.svg" alt="Drilled plate layout sketch">
+            <img src="images/cad-stamping-3.svg" alt="Die block assembly sketch">
+            <img src="images/cad-stamping-4.svg" alt="Press tool top view sketch">
+            <img src="images/cad-stamping-5.svg" alt="Punch array section sketch">
+            <img src="images/cad-stamping-6.svg" alt="Fixture plate sketch">
+            <img src="images/cad-stamping-7.svg" alt="Punch matrix sketch">
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="skills">
       <div class="container">
         <h2 class="title">Skills</h2>

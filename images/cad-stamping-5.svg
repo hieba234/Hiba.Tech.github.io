@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-label="Tooling section with punches">
+  <rect width="100%" height="100%" fill="#0c1323"/>
+  <g stroke="#22d3ee" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="220" y="200" width="960" height="520" rx="26" fill="#0f172a"/>
+    <path d="M260 360 h880" stroke="#3b82f6" stroke-dasharray="16 14"/>
+    <g stroke="#22d3ee" stroke-width="6">
+      <line x1="320" y1="260" x2="320" y2="640"/><line x1="420" y1="260" x2="420" y2="640"/><line x1="520" y1="260" x2="520" y2="640"/>
+      <line x1="920" y1="260" x2="920" y2="640"/><line x1="1020" y1="260" x2="1020" y2="640"/><line x1="1120" y1="260" x2="1120" y2="640"/>
+    </g>
+    <g stroke="#fde68a" stroke-width="10">
+      <line x1="360" y1="310" x2="360" y2="550"/><line x1="460" y1="310" x2="460" y2="550"/><line x1="560" y1="310" x2="560" y2="550"/>
+      <line x1="940" y1="310" x2="940" y2="550"/><line x1="1040" y1="310" x2="1040" y2="550"/><line x1="1140" y1="310" x2="1140" y2="550"/>
+    </g>
+    <rect x="280" y="600" width="840" height="60" rx="18" fill="#1f2937" stroke="#38bdf8" stroke-width="6"/>
+  </g>
+  <text x="60" y="90" fill="#e2e8f0" font-family="Inter,system-ui" font-size="32">Punch Array Section</text>
+  <text x="60" y="135" fill="#94a3b8" font-family="Inter,system-ui" font-size="28">Sequential punches above die cavity</text>
+</svg>

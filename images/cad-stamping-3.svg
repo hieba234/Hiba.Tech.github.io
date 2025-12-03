@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-label="Die block assembly sketch">
+  <rect width="100%" height="100%" fill="#0c111e"/>
+  <g stroke="#38bdf8" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="200" y="220" width="360" height="520" rx="22" fill="#0f172a"/>
+    <rect x="520" y="220" width="360" height="520" rx="22" fill="#0f172a"/>
+    <rect x="840" y="220" width="360" height="520" rx="22" fill="#0f172a"/>
+    <g stroke="#22d3ee" stroke-width="5">
+      <circle cx="380" cy="320" r="20"/><circle cx="380" cy="500" r="20"/><circle cx="380" cy="680" r="20"/>
+      <circle cx="700" cy="320" r="20"/><circle cx="700" cy="500" r="20"/><circle cx="700" cy="680" r="20"/>
+      <circle cx="1020" cy="320" r="20"/><circle cx="1020" cy="500" r="20"/><circle cx="1020" cy="680" r="20"/>
+    </g>
+    <path d="M260 360 h880" stroke="#3b82f6" stroke-width="6" stroke-dasharray="18 16"/>
+  </g>
+  <text x="60" y="90" fill="#e2e8f0" font-family="Inter,system-ui" font-size="32">Die Block Assembly</text>
+  <text x="60" y="135" fill="#94a3b8" font-family="Inter,system-ui" font-size="28">Multi-stage block with fasteners</text>
+</svg>
